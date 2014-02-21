@@ -8,7 +8,6 @@
 
 namespace talma\widgets;
 
-
 /**
  * JsTree widget is a Yii2 wrapper for the jsTree jQuery plugin.
  *
@@ -16,7 +15,7 @@ namespace talma\widgets;
  * @since 1.0
  * @see http://jstree.com
  */
-class JsTree extends InputWidget
+class JsTree extends \yii\widgets\InputWidget
 {
 	/**
 	 * Registers the needed assets
