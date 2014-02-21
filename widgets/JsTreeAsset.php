@@ -18,6 +18,10 @@ use yii\web\AssetBundle;
  */
 class JsTreeAsset extends AssetBundle
 {
+	public $depends = [
+		'yii\web\JqueryAsset',
+	];
+
 	/**
 	 * Set up CSS and JS asset arrays based on the base-file names
 	 * @param string $type whether 'css' or 'js'
@@ -41,10 +45,21 @@ class JsTreeAsset extends AssetBundle
 	 */
 	public function init()
 	{
-		$this->setSourcePath(__DIR__ . '/assets');
+		$this->setSourcePath(__DIR__ . '/../assets');
 		$this->setupAssets('css', ['themes/default/style']);
 		$this->setupAssets('js', ['jstree']);
 		parent::init();
+	}
+
+	/**
+	 * Sets the source path if empty
+	 * @param string $path the path to be set
+	 */
+	protected function setSourcePath($path)
+	{
+		if (empty($this->sourcePath)) {
+			$this->sourcePath = $path;
+		}
 	}
 
 }
