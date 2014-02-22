@@ -30,7 +30,10 @@ class JsTree extends \yii\widgets\InputWidget
 		parent::init();
 		$this->registerAssets();
 
+		echo Html::activeTextInput($this->model, $this->attribute, ['class' => 'hidden', 'value' => $this->value]);
+
 		$this->options['id'] = 'jsTree_' . $this->options['id'];
+		Html::addCssClass($this->options, "js_tree_{$this->attribute}");
 		echo Html::tag('div', '', $this->options);
 	}
 
@@ -49,7 +52,20 @@ class JsTree extends \yii\widgets\InputWidget
 
 		$json = Json::encode($default);
 
-		$js = "\$('#jsTree_{$this->options['id']}').jstree({$json});";
+		$inputId = Html::getInputId($this->model, $this->attribute);
+
+		$js = <<<SCRIPT
+;(function($, window, document, undefined) {
+	$('#jsTree_{$this->options['id']}')
+		.bind("loaded.jstree", function (event, data) {
+				$("#{$inputId}").val(JSON.stringify(data.selected));
+			})
+		.bind("changed.jstree", function(e, data, x){
+				$("#{$inputId}").val(JSON.stringify(data.selected));
+		})
+		.jstree({$json});
+})(window.jQuery, window, document);
+SCRIPT;
 		$view->registerJs($js);
 	}
 
