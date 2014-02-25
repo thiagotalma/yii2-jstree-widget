@@ -1,5 +1,5 @@
 {
-    "name": "thiagotalma/yii2-jstree-widget",
+    "name": "thiagotalma/yii2-jstree",
     "description": "Widget for Yii Framework 2.0 to use JsTree",
     "keywords": ["yii2", "extension", "widget", "form", "jstree"],
     "homepage": "https://github.com/thiagotalma/yii2-jstree-widget",
@@ -13,9 +13,11 @@
         }
     ],
     "require": {
-        "yiisoft/yii2": "dev-master"
+        "yiisoft/yii2": "*"
     },
     "autoload": {
-        "psr-4": {"talma\\": ""}
+        "psr-4": {
+            "talma\\yii2-jstree\\": ""
+        }
     }
 }
