@@ -28,5 +28,14 @@ Usage
 Once the extension is installed, simply use it in your code by :
 
 ```php
-<?= \talma\widget\JsTree::wiget(); ?>;
+<?=  \talma\widgets\JsTree::widget([
+    'attribute' => 'attribute_name',
+    'model' => $model,
+    'core' => [
+        'data' => $data
+        ...
+    ],
+    'plugins' => ['types', 'dnd', 'contextmenu', 'wholerow', 'state'],
+    ...
+]); ?>
 ```
