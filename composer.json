@@ -12,6 +12,7 @@
             "homepage": "http://www.thiagomt.com/"
         }
     ],
+    "minimum-stability": "dev",
     "require": {
         "yiisoft/yii2": "*"
     },
