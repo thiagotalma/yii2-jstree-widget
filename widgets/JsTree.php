@@ -78,7 +78,10 @@ class JsTree extends InputWidget
     /**
      * @var array Stores all defaults for the types plugin
      */
-    public $types = [];
+    public $types = [
+        '#' => [],
+        'default' => [],
+    ];
 
     /**
      * @inheritdoc
