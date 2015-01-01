@@ -18,6 +18,8 @@ use yii\web\AssetBundle;
  */
 class JsTreeAsset extends AssetBundle
 {
+    public $sourcePath = '@bower/jstree/dist';
+
     /**
      * @inheritdoc
      */
@@ -48,7 +50,6 @@ class JsTreeAsset extends AssetBundle
      */
     public function init()
     {
-        $this->setSourcePath(__DIR__ . '/../assets');
         $this->setupAssets('css', ['themes/default/style']);
         $this->setupAssets('js', ['jstree']);
         parent::init();
