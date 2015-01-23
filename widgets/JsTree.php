@@ -21,6 +21,8 @@ use yii\widgets\InputWidget;
  */
 class JsTree extends InputWidget
 {
+    public $unmodelMode = false;
+
     /**
      * @var array Data configuration.
      * If left as false the HTML inside the jstree container element is used to populate the tree (that should be an unordered list with list items).
@@ -83,6 +85,8 @@ class JsTree extends InputWidget
         'default' => [],
     ];
 
+    private $unmodelId;
+
     /**
      * @inheritdoc
      */
@@ -91,10 +95,18 @@ class JsTree extends InputWidget
         parent::init();
         $this->registerAssets();
 
-        echo Html::activeTextInput($this->model, $this->attribute, ['class' => 'hidden', 'value' => $this->value]);
+        if (!$this->unmodelMode) {
+            $this->unmodelId = $this->options['id'];
+			echo Html::inputHidden($this->unmodelId, null, ['id' => $this->unmodelId]);
+        }
+        else
+        	echo Html::activeTextInput($this->model, $this->attribute, ['class' => 'hidden', 'value' => $this->value]);
 
         $this->options['id'] = 'jsTree_' . $this->options['id'];
-        Html::addCssClass($this->options, "js_tree_{$this->attribute}");
+        
+        if (!$this->unmodelMode)
+        	Html::addCssClass($this->options, "js_tree_{$this->attribute}");
+
         echo Html::tag('div', '', $this->options);
     }
 
@@ -119,7 +131,7 @@ class JsTree extends InputWidget
         ];
         $defaults = Json::encode($config);
 
-        $inputId = Html::getInputId($this->model, $this->attribute);
+        $inputId = ($this->unmodelMode) ? $this->unmodelId : Html::getInputId($this->model, $this->attribute);
 
         $js = <<<SCRIPT
 ;(function($, window, document, undefined) {
