@@ -85,8 +85,6 @@ class JsTree extends InputWidget
         'default' => [],
     ];
 
-    private $unmodelId;
-
     /**
      * @inheritdoc
      */
@@ -96,8 +94,7 @@ class JsTree extends InputWidget
         $this->registerAssets();
 
         if ($this->unmodelMode) {
-            $this->unmodelId = $this->options['id'];
-			echo Html::inputHidden($this->unmodelId, null, ['id' => $this->unmodelId]);
+			echo Html::inputHidden($this->options['id'], null, [ 'id' => $this->options['id'] ]);
         }
         else
         	echo Html::activeTextInput($this->model, $this->attribute, ['class' => 'hidden', 'value' => $this->value]);
@@ -131,7 +128,7 @@ class JsTree extends InputWidget
         ];
         $defaults = Json::encode($config);
 
-        $inputId = ($this->unmodelMode) ? $this->unmodelId : Html::getInputId($this->model, $this->attribute);
+        $inputId = ($this->unmodelMode) ? $this->options['id'] : Html::getInputId($this->model, $this->attribute);
 
         $js = <<<SCRIPT
 ;(function($, window, document, undefined) {
