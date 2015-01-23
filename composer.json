@@ -1,8 +1,8 @@
 {
-    "name": "thiagotalma/yii2-jstree",
+    "name": "demogorgorn/yii2-jstree",
     "description": "Widget for Yii Framework 2.0 to use JsTree",
     "keywords": ["yii2", "extension", "widget", "form", "jstree"],
-    "homepage": "https://github.com/thiagotalma/yii2-jstree-widget",
+    "homepage": "https://github.com/demogorgorn/yii2-jstree-widget",
     "type": "yii2-extension",
     "license": "BSD 3-Clause",
     "authors": [
