@@ -96,13 +96,14 @@ class JsTree extends InputWidget
         if ($this->unmodelMode) {
 			echo Html::inputHidden($this->options['id'], null, [ 'id' => $this->options['id'] ]);
         }
-        else
+        else {
         	echo Html::activeTextInput($this->model, $this->attribute, ['class' => 'hidden', 'value' => $this->value]);
+            Html::addCssClass($this->options, "js_tree_{$this->attribute}");
+        }
 
         $this->options['id'] = 'jsTree_' . $this->options['id'];
         
-        if (!$this->unmodelMode)
-        	Html::addCssClass($this->options, "js_tree_{$this->attribute}");
+        	
 
         echo Html::tag('div', '', $this->options);
     }
