@@ -95,7 +95,7 @@ class JsTree extends InputWidget
         parent::init();
         $this->registerAssets();
 
-        if (!$this->unmodelMode) {
+        if ($this->unmodelMode) {
             $this->unmodelId = $this->options['id'];
 			echo Html::inputHidden($this->unmodelId, null, ['id' => $this->unmodelId]);
         }
