@@ -6,7 +6,7 @@
  * @version 1.0.0
  */
 
-namespace demogorgorn\widgets;
+namespace talma\widgets;
 
 use yii\helpers\Html;
 use yii\helpers\Json;
@@ -21,8 +21,6 @@ use yii\widgets\InputWidget;
  */
 class JsTree extends InputWidget
 {
-    public $unmodelMode = false;
-
     /**
      * @var array Data configuration.
      * If left as false the HTML inside the jstree container element is used to populate the tree (that should be an unordered list with list items).
@@ -93,18 +91,16 @@ class JsTree extends InputWidget
         parent::init();
         $this->registerAssets();
 
-        if ($this->unmodelMode) {
-			echo Html::inputHidden($this->options['id'], null, [ 'id' => $this->options['id'] ]);
+        if (!$this->hasModel()) {
+            echo Html::hiddenInput($this->options['id'], null, [ 'id' => $this->options['id'] ]);
         }
         else {
-        	echo Html::activeTextInput($this->model, $this->attribute, ['class' => 'hidden', 'value' => $this->value]);
+            echo Html::activeTextInput($this->model, $this->attribute, ['class' => 'hidden', 'value' => $this->value]);
             Html::addCssClass($this->options, "js_tree_{$this->attribute}");
         }
 
         $this->options['id'] = 'jsTree_' . $this->options['id'];
         
-        	
-
         echo Html::tag('div', '', $this->options);
     }
 
@@ -129,7 +125,7 @@ class JsTree extends InputWidget
         ];
         $defaults = Json::encode($config);
 
-        $inputId = ($this->unmodelMode) ? $this->options['id'] : Html::getInputId($this->model, $this->attribute);
+        $inputId = (!$this->hasModel()) ? $this->options['id'] : Html::getInputId($this->model, $this->attribute);
 
         $js = <<<SCRIPT
 ;(function($, window, document, undefined) {
