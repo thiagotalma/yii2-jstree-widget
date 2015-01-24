@@ -91,10 +91,16 @@ class JsTree extends InputWidget
         parent::init();
         $this->registerAssets();
 
-        echo Html::activeTextInput($this->model, $this->attribute, ['class' => 'hidden', 'value' => $this->value]);
+        if (!$this->hasModel()) {
+            echo Html::hiddenInput($this->options['id'], null, [ 'id' => $this->options['id'] ]);
+        }
+        else {
+            echo Html::activeTextInput($this->model, $this->attribute, ['class' => 'hidden', 'value' => $this->value]);
+            Html::addCssClass($this->options, "js_tree_{$this->attribute}");
+        }
 
         $this->options['id'] = 'jsTree_' . $this->options['id'];
-        Html::addCssClass($this->options, "js_tree_{$this->attribute}");
+        
         echo Html::tag('div', '', $this->options);
     }
 
@@ -119,7 +125,7 @@ class JsTree extends InputWidget
         ];
         $defaults = Json::encode($config);
 
-        $inputId = Html::getInputId($this->model, $this->attribute);
+        $inputId = (!$this->hasModel()) ? $this->options['id'] : Html::getInputId($this->model, $this->attribute);
 
         $js = <<<SCRIPT
 ;(function($, window, document, undefined) {
