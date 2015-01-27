@@ -39,3 +39,17 @@ Once the extension is installed, simply use it in your code by :
     ...
 ]); ?>
 ```
+
+Usage without a model (you must specify the "name" attribute) :
+
+```php
+<?=  \talma\widgets\JsTree::widget([
+    'name' => 'js_tree',
+    'core' => [
+        'data' => $data
+        ...
+    ],
+    'plugins' => ['types', 'dnd', 'contextmenu', 'wholerow', 'state'],
+    ...
+]); ?>
+```
