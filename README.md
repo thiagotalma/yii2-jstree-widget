@@ -2,6 +2,8 @@ yii2-jstree
 ===========
 Widget for Yii Framework 2.0 to use [JsTree](http://www.jstree.com)
 
+[![Latest Stable Version](https://poser.pugx.org/thiagotalma/yii2-jstree/v/stable)](https://packagist.org/packages/thiagotalma/yii2-jstree) [![Total Downloads](https://poser.pugx.org/thiagotalma/yii2-jstree/downloads)](https://packagist.org/packages/thiagotalma/yii2-jstree) [![Monthly Downloads](https://poser.pugx.org/thiagotalma/yii2-jstree/d/monthly)](https://packagist.org/packages/thiagotalma/yii2-jstree) [![Daily Downloads](https://poser.pugx.org/thiagotalma/yii2-jstree/d/daily)](https://packagist.org/packages/thiagotalma/yii2-jstree) [![Latest Unstable Version](https://poser.pugx.org/thiagotalma/yii2-jstree/v/unstable)](https://packagist.org/packages/thiagotalma/yii2-jstree) [![License](https://poser.pugx.org/thiagotalma/yii2-jstree/license)](https://packagist.org/packages/thiagotalma/yii2-jstree)
+
 Installation
 ------------
 
