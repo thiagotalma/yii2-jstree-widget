@@ -12,13 +12,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist thiagotalma/yii2-jstree "*"
+php composer.phar require --prefer-dist thiagotalma/yii2-jstree "~1"
 ```
 
 or add
 
 ```
-"thiagotalma/yii2-jstree": "*"
+"thiagotalma/yii2-jstree": "~1"
 ```
 
 to the require section of your `composer.json` file.
