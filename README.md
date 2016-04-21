@@ -55,3 +55,11 @@ Usage without a model (you must specify the "name" attribute) :
     ...
 ]); ?>
 ```
+
+If you wanna use the contextmenu plugin and you are having issues with a not appearing menu, you should add the following css to your site:
+
+```css
+.vakata-context {
+    z-index:999 !important;
+}
+```
